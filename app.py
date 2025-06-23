@@ -1,6 +1,11 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import pickle
+
+# Load the trained CatBoost model
+with open("tuned_catboost_model.pkl", "rb") as file:
+    model = pickle.load(file)
 
 # Load model
 model = joblib.load("tuned_catboost_model.pkl")
