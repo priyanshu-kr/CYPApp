@@ -1,14 +1,9 @@
 import streamlit as st
 import pandas as pd
 import joblib
-import pickle
-
-# Load the trained CatBoost model
-with open("tuned_catboost_model.pkl", "rb") as file:
-    model = pickle.load(file)
 
 # Load model
-model = joblib.load("tuned_catboost_model.pkl")
+model = joblib.load("catboost_model.pkl")
 
 # Encoding map
 CROP_TYPE_MAP = {
@@ -42,4 +37,3 @@ if st.sidebar.button("Predict Yield"):
 
     prediction = model.predict(df)[0]
     st.success(f"🌟 Predicted Crop Yield: **{round(prediction, 2)} units/acre**")
-i
